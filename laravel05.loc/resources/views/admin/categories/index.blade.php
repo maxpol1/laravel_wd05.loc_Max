@@ -57,12 +57,13 @@
                                     </td>
                                     <td>{{ $category->name }}</td>
                                     <td>
-                                        <a href="{{ route('categories.edit', compact('category')) }}" class="btn btn-info">EDIT</a> </td>
-                                    <form action="{{ route('categories.destroy'), compact('category') }}" method="post">
+                                        <a href="{{ route('categories.edit', compact('category')) }}" class="btn btn-info">EDIT</a>
+                                    <form action="{{ route('categories.destroy', compact('category')) }}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">DELETE</button>
                                     </form>
+                                    </td>
                                 </tr>
                                 @endforeach
 
