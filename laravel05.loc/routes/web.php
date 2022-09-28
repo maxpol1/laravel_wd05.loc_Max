@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\MyController;
+use App\Http\Controllers\ProductTnController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +22,20 @@ use \App\Http\Controllers\Admin\ProductController;
 |
 */
 
+
 Route::get('/', SiteController::class);
+Route::get('/catalog', [StoreController::class, 'index']);
+
+Route::get('/cart', [CartController::class, 'getCart']);
+Route::get('/add_to_cart', [CartController::class, 'addToCart']);
+Route::get('/catalog/<category-id>/<product-id>', [ProductTnController::class, 'product']);
+Route::get('/test', function (){
+//    $product = \App\Models\Product::inRandomOrder()->first();
+    $category = \App\Models\Category::inRandomOrder()->first();
+//    $category = \App\Models\Category::findOrFail($product->category_id);
+    dd($category->products);
+});
+
 
 //Route::get('/any_file', function (){
 //    return \Illuminate\Support\Facades\Storage::download('ololo.txt');
@@ -28,7 +45,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->group(function () {
     Route::get('/', [MyController::class, 'index']);
 //    Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resources([
@@ -42,7 +59,7 @@ Route::prefix('admin')->group(function (){
 //
 //Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories.index');
 //Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-//Route::post('/admin/categories/create', [CategoryController::class, 'store'])->name('categories.store');
+//Route::post('/admin/categories/create', [CategoryController::class, 'cotalog'])->name('categories.cotalog');
 //Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 //Route::put('/admin/categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
 //

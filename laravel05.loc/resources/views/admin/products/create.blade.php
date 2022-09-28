@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
 {{--                            @dump(@error)--}}
-                            <form action="{{ route('products.store') }}" method="post" class="form-horizontal form-material mx-2" enctype="multipart/form-data">
+                            <form action="{{ route('products.cotalog') }}" method="post" class="form-horizontal form-material mx-2" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label class="col-md-12">Name</label>

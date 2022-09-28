@@ -28,4 +28,8 @@ class Category extends Model
 //    protected $guarded = ['id']; указываем набор полей которые менять нельзя.
 //    protected $table = 'catalog_categories'; меняет имя таблицы.
 //    protected $primaryKey = 'category_id'; указывает поле первычным ключом.
+public function products(){
+    return $this->hasMany(Product::class);
+//    $this->belongsToMany(Product::class, 'role_users', 'category_id', 'product_id');
+}
 }

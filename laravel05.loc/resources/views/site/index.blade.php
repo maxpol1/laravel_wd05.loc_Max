@@ -49,6 +49,17 @@
 					<!-- /shop -->
 				</div>
 				<!-- /row -->
+                <div class="col-md-4 col-xs-6">
+                    <div class="shop">
+                        <div class="shop-img">
+                            <img src="/site_assets/img/product01.png" alt="">
+                        </div>
+                        <div class="shop-body">
+                            <h3>Laptop<br>Collection</h3>
+                            <a href="http://localhost:8080/catalog/%3Ccategory-id%3E/%3Cproduct-id%3E" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
 			</div>
 			<!-- /container -->
 		</div>
@@ -92,7 +103,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">{{$product->name}}</a></h3>
-												<h4 class="product-price">${{$product->price/100}}.{{$product->price%100}}</h4>
+												<h4 class="product-price">{{$product->price/100}}.{{$product->price%100}}</h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
