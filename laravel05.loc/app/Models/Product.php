@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
+
 class Product extends Model
 {
     use HasFactory;
@@ -29,5 +31,12 @@ class Product extends Model
             }
             return 'https://klike.net/uploads/posts/2019-05/1556708032_1.jpg';
         }
+    }
+
+    public function setImageAttribute($value){
+        $this->attributes['image'] = Str::lower($value);
+    }
+    public function category(){
+        return$this->belongsTo(Category::class);
     }
 }

@@ -16,7 +16,8 @@ class SiteController extends Controller
 //        order by id desc
 
         $latestProducts = Product::query()
-            ->select()
+            //->select(['id', 'name', 'image'])
+            //->orderBy('id', 'desc') или
             ->limit(10)
             ->where('active', 1)
             ->latest()
