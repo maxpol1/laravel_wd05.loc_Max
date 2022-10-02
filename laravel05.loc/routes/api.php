@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{user}', [UserController::class, 'show']);
-
+Route::apiResource('/categories', CategoryController::class);
 
 
 Route::middleware('/auth:sanctum')->get('/user', function (Request $request) {
