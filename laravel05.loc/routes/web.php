@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\ProductTnController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StoreController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\ProductController;
@@ -27,83 +28,13 @@ Route::get('/', SiteController::class);
 Route::get('/catalog', [StoreController::class, 'index']);
 
 Route::get('/cart', [CartController::class, 'getCart'])->name('cart');
-Route::post('/add_to_cart', [CartController::class, 'addToCart'])->name('add_to_cart');
+Route::post('/add_to_cart', [CartController::class, 'add ToCart'])->name('add_to_cart');
 Route::get('/catalog/{category_id}/{product_id}', [ProductTnController::class, 'product']);
-Route::post('/test', function (\http\Env\Request $request){
-    $data = $request->all();
-//        [
-//        'name'=> 'lvdbskm',
-//        'khcskd' => 'dvdsfvs',
-//        'dvdsvs'=>[
-//            'sdvsvs'=> 'dvcsd',
-//            'dsvdsv'=>'dvadsvs'
-//        ],
-//        'parents' => [
-//            'sfgdgdfbfd', 'sfgsrgsgd',
-//        ]
-//    ];
-    return response()->json(json_encode($data)->setStatusCode(401));
 
-
-//        dump(json_encode($data));
-
-//    $json = '[
-//        {
-//            "value": "Иванов Виктор",
-//            "unrestricted_value": "Иванов Виктор",
-//            "data": {
-//                "surname": "Иванов",
-//                "name": "Виктор",
-//                "patronymic": null,
-//                "gender": "MALE"
-//            }
-//        },
-//        {
-//            "value": "Иванченко Виктор",
-//            "unrestricted_value": "Иванченко Виктор",
-//            "data": {
-//                "surname": "Иванченко",
-//                "name": "Виктор",
-//                "patronymic": null,
-//                "gender": "MALE"
-//            }
-//        },
-//        {
-//            "value": "Виктор Иванович",
-//            "unrestricted_value": "Виктор Иванович",
-//            "data": {
-//                "surname": null,
-//                "name": "Виктор",
-//                "patronymic": "Иванович",
-//                "gender": "MALE"
-//            }
-//        }
-//]';
-//    $json2 =  '{
-//        "value": "Виктор Иванович",
-//            "unrestricted_value": "Виктор Иванович",
-//            "data": {
-//            "surname": null,
-//                "name": "Виктор",
-//                "patronymic": "Иванович",
-//                "gender": "MALE"
-//            }
-//        }';
-//   $data =  json_decode($json, true);
-//    dump($data);
-//    $data =  json_decode($json2, true);
-//    dump($data);
-
-//    $product = \App\Models\Product::inRandomOrder()->first();
-//    $category = \App\Models\Category::inRandomOrder()->first();
-//    $category = \App\Models\Category::findOrFail($product->category_id);
-//    dd($category->products);
+Route::get('/test', function (\Illuminate\Http\Request $request){
+   return view('test');
 });
 
-
-//Route::get('/any_file', function (){
-//    return \Illuminate\Support\Facades\Storage::download('ololo.txt');
-//});
 
 Auth::routes();
 
