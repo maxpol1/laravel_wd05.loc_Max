@@ -31,9 +31,39 @@ Route::get('/cart', [CartController::class, 'getCart'])->name('cart');
 Route::post('/add_to_cart', [CartController::class, 'add ToCart'])->name('add_to_cart');
 Route::get('/catalog/{category_id}/{product_id}', [ProductTnController::class, 'product']);
 
+
+
 Route::get('/test', function (\Illuminate\Http\Request $request){
-   return view('test');
+
+    $query = [
+
+        'key' =>env('WEATHER_API_KEY'),
+        'q' => 'Minsk',
+        'dt' => '1989-08-31'
+    ];
+
+//    $client = Http::baseUrl('http://api.weatherapi.com/v1');
+//
+//    $response =  $client->get('/current.json', $query);
+//    $client = new \GuzzleHttp\Client();
+//    $response = $client->get('http://api.weatherapi.com/v1/current.json?key=16fab3d8f2cf4017964171222220810&q=Minsk&dt=1989-08-31');
+      $response = Http::retry(3, 100)->get('http://api.weatherapi.com/v1/current.json?key=16fab3d8f2cf4017964171222220810&q=Minsk&dt=1989-08-31');
+//    $result = $response['current']['temp_c']. 'C'. ' '. $response['location']['region']. $query[dt];
+    dd($response->json());
 });
+
+//Route::get('/converter', function (\Illuminate\Http\Request $request){
+//    $response = Http::get( 'https://www.nbrb.by/api/exrates/currencies');
+//    $currencies = $response->collect()->keyBy('Cur_Abbreviation');
+////    dd($currencies);
+//   return view('converter');
+//});
+//Route::get('/converter', function (\Illuminate\Http\Request $request){
+//    $query = ['periodicity' => 0];
+//    $response = Http::get( 'https://www.nbrb.by/api/exrates/rates', $query);
+//    dd($response->collect()->keyBy('Cur_Abbreviation'));
+
+//});
 
 
 Auth::routes();

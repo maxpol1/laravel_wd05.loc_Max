@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ConverterController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::apiResource('/categories', CategoryController::class);
-
+Route::get('/converter', [ConverterController::class, 'index'])->name('converter');
 
 Route::middleware('/auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -11,17 +11,17 @@
 
 <body>
 
-    <button  onclick="test()">aaaaa</button>
+{{--    <button  onclick="test()">aaaaa</button>--}}
 </body>
-<script> function test(event) {
-        // event.preventDefault()
-        // alert(1111)
-        axios.get('/api/categories').then((res) =>{
-            let  categories = res.data
-            console.log (categories.data)
-            }
-        )
-    }
+{{--<script> function test(event) {--}}
+{{--        // event.preventDefault()--}}
+{{--        // alert(1111)--}}
+{{--        axios.get('/api/categories').then((res) =>{--}}
+{{--            let  categories = res.data--}}
+{{--            console.log (categories.data)--}}
+{{--            }--}}
+{{--        )--}}
+{{--    }--}}
 
 </script>
 </html>
