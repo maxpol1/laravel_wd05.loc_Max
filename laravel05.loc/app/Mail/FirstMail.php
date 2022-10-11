@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class FirstMail extends Mailable
+class FirstMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -16,6 +16,7 @@ class FirstMail extends Mailable
      *
      * @return void
      */
+    public $mailMessage;
     public function __construct($mailMassage)
     {
        $this->mailMassage = $mailMassage;

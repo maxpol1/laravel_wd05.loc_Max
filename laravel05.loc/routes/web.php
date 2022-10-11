@@ -33,27 +33,74 @@ Route::get('/catalog/{category_id}/{product_id}', [ProductTnController::class, '
 
 
 
-Route::get('/test', function (\Illuminate\Http\Request $request){
+Route::post('/apivk', function (\Illuminate\Http\Request $request){
+    $query =[
+        'fields' => [
+            'activities',
+            'about',
+            'city',
+            'photo_200'
+        ],
+        'user_id' => $request->input('user_id'),
 
-    $query = [
-
-        'key' =>env('WEATHER_API_KEY'),
-        'q' => 'Minsk',
-        'dt' => '1989-08-31'
+        'v' => '5.131',
+//        'client_id' => env('API_ID'),
+        'access_token' => env('ACCESS_TOKEN')
     ];
+   $response = Http::retry(3, 100)->get('https://api.vk.com/method/users.get', $query);
+
+
+$data = $response->json();
+
+//dd($data);
+
+return view('vk.api_vk_user', [
+    'user' => $data["response"][0],
+]);
+
+
+});
+Route::get('apivk', function(\Illuminate\Http\Request $request){
+
+    return view('vk.apivk');
+
+});
+
+
+
+Route::get('/test', function (\Illuminate\Http\Request $request){
+//    $job = new \App\Jobs\FirstJob();
+//    $job->dispatch('ksbvksdbvkdb');
+//    \App\Jobs\FirstJob::dispatch('kdnvkslvnsv');
+
+//    $mail = new  \App\Mail\FirstMail('ffvfdvf'); емайлы очереди выводы.
+//    \Illuminate\Support\Facades\Mail::send($mail);
+
+
+//    \App\Jobs\FirstJob::dispatchAfterResponse('hjhvjhv kdnvkslvnsv');
+
+//    ->onQueue('test')
+
+//    $query = [
+//
+//        'key' =>env('WEATHER_API_KEY'),
+//        'q' => 'Minsk',
+//        'dt' => '1989-08-31'
+//    ];
 
 //    $client = Http::baseUrl('http://api.weatherapi.com/v1');
 //
 //    $response =  $client->get('/current.json', $query);
 //    $client = new \GuzzleHttp\Client();
 //    $response = $client->get('http://api.weatherapi.com/v1/current.json?key=16fab3d8f2cf4017964171222220810&q=Minsk&dt=1989-08-31');
-      $response = Http::retry(3, 100)->get('http://api.weatherapi.com/v1/current.json?key=16fab3d8f2cf4017964171222220810&q=Minsk&dt=1989-08-31');
+//      $response = Http::retry(3, 100)->get('http://api.weatherapi.com/v1/current.json?key=16fab3d8f2cf4017964171222220810&q=Minsk&dt=1989-08-31');
 //    $result = $response['current']['temp_c']. 'C'. ' '. $response['location']['region']. $query[dt];
-    dd($response->json());
+//    dd($response->json());
+//    return view('test', compact('response'));
 });
 
 //Route::get('/converter', function (\Illuminate\Http\Request $request){
-//    $response = Http::get( 'https://www.nbrb.by/api/exrates/currencies');
+//    $response = Http::retry(3, 100)->get( 'https://www.nbrb.by/api/exrates/currencies');
 //    $currencies = $response->collect()->keyBy('Cur_Abbreviation');
 ////    dd($currencies);
 //   return view('converter');
