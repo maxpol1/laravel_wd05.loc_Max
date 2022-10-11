@@ -10,7 +10,6 @@
 <body>
 
 <h1>{{ $user['first_name'] }} {{ $user["last_name"] }}</h1>
-<<<<<<< HEAD
 
 <h2> {{ $user['id'] }}</h2>
 
@@ -18,9 +17,5 @@
 
 <img src="{{ $user["photo_200"] }}" alt="">
 
-=======
-<h2> {{ $user['id'] }}</h2>
-<img src="{{ $user["photo_200"] }}" alt="">
->>>>>>> 738aedc4dc3ddf83c0033e34ca8c03f181ec5794
 </body>
 </html>

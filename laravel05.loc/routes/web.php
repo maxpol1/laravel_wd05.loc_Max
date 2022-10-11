@@ -38,41 +38,10 @@ Route::post('/apivk', function (\Illuminate\Http\Request $request){
         'fields' => [
             'activities',
             'about',
-<<<<<<< HEAD
-=======
-            'bdate',
->>>>>>> 738aedc4dc3ddf83c0033e34ca8c03f181ec5794
             'city',
             'photo_200'
         ],
         'user_id' => $request->input('user_id'),
-<<<<<<< HEAD
-=======
-        'v' => '5.131',
-//        'client_id' => e'API_ID',
-        'access_token' => env('ACCESS_TOKEN')
-    ];
-   $response = Http::retry(3, 100)->get('https://api.vk.com/method/users.get', $query);
-
-
-$data = $response->json();
-//dd($data);
-return view('vk.api_vk_user', [
-    'user' => $data["response"][0],
-
-]);
-
-
-});
-Route::get('apivk', function(\Illuminate\Http\Request $request){
-
-    return view('vk.apivk');
-
-});
-
-
-Route::get('/test', function (\Illuminate\Http\Request $request){
->>>>>>> 738aedc4dc3ddf83c0033e34ca8c03f181ec5794
 
         'v' => '5.131',
 //        'client_id' => env('API_ID'),
@@ -127,11 +96,7 @@ Route::get('/test', function (\Illuminate\Http\Request $request){
 //      $response = Http::retry(3, 100)->get('http://api.weatherapi.com/v1/current.json?key=16fab3d8f2cf4017964171222220810&q=Minsk&dt=1989-08-31');
 //    $result = $response['current']['temp_c']. 'C'. ' '. $response['location']['region']. $query[dt];
 //    dd($response->json());
-<<<<<<< HEAD
 //    return view('test', compact('response'));
-=======
-    return view('test', compact('response'));
->>>>>>> 738aedc4dc3ddf83c0033e34ca8c03f181ec5794
 });
 
 //Route::get('/converter', function (\Illuminate\Http\Request $request){

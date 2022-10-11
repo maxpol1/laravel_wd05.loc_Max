@@ -11,18 +11,12 @@
 
 <form action="/apivk" method="post">
 @csrf
-<<<<<<< HEAD
 
 {{--    <input type="checkbox" value="1" name="title" @if($data->city->title) checked @endif>--}}
     <input type="text" name="user_id" required>
 <button type="submit">Submit</button>
 
 
-=======
-    <input type="text" name="user_id" required>
-<button type="submit">Submit</button>
-
->>>>>>> 738aedc4dc3ddf83c0033e34ca8c03f181ec5794
 </form>
 
 
