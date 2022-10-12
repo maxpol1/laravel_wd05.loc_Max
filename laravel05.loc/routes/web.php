@@ -31,6 +31,13 @@ Route::get('/cart', [CartController::class, 'getCart'])->name('cart');
 Route::post('/add_to_cart', [CartController::class, 'add ToCart'])->name('add_to_cart');
 Route::get('/catalog/{category_id}/{product_id}', [ProductTnController::class, 'product']);
 
+Route::get('/xchangeRates', function (\Illuminate\Http\Request $request){
+//    $response = Http::retry(3, 100)->get('https://www.nbrb.by/api/exrates/currencies');
+//    $currencies = $response->collect()->keyBy('Cur_Abbreviation');
+//     dd($currencies);
+     return view('well.xchangeRates', compact('currencies'));
+});
+
 
 
 Route::post('/apivk', function (\Illuminate\Http\Request $request){
@@ -99,11 +106,11 @@ Route::get('/test', function (\Illuminate\Http\Request $request){
 //    return view('test', compact('response'));
 });
 
-//Route::get('/converter', function (\Illuminate\Http\Request $request){
+//Route::get('/xchangeRates', function (\Illuminate\Http\Request $request){
 //    $response = Http::retry(3, 100)->get( 'https://www.nbrb.by/api/exrates/currencies');
 //    $currencies = $response->collect()->keyBy('Cur_Abbreviation');
-////    dd($currencies);
-//   return view('converter');
+//    dd($currencies);
+//   return view('well.xchangeRates');
 //});
 //Route::get('/converter', function (\Illuminate\Http\Request $request){
 //    $query = ['periodicity' => 0];

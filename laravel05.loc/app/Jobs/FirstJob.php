@@ -44,7 +44,6 @@ class FirstJob implements ShouldQueue
      */
     public function handle()
     {
-        $mail = new \App\Mail\FirstMail($this->emailMessage );
-        Mail::send($mail);
+
     }
 }
