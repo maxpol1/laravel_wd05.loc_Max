@@ -8,20 +8,13 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
-
 <body>
-
-{{--    <button  onclick="test()">aaaaa</button>--}}
+<form action="">
+    @csrf
+    <select name="from" id=""></select>
+    <select name="to" id=""></select>
+    <input type="text" name="count">
+    <button type="submit">Submit</button>
+</form>
 </body>
-{{--<script> function test(event) {--}}
-{{--        // event.preventDefault()--}}
-{{--        // alert(1111)--}}
-{{--        axios.get('/api/categories').then((res) =>{--}}
-{{--            let  categories = res.data--}}
-{{--            console.log (categories.data)--}}
-{{--            }--}}
-{{--        )--}}
-{{--    }--}}
-
-{{--</script>--}}
 </html>
