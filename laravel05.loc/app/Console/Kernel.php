@@ -25,9 +25,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 //        $schedule->command('queue:listen')
-        $schedule->command('send:currencies')
-            ->days([2, 3, 4, 5, 6])
-            ->twiceDaily(9, 13);
+//        $schedule->command('send:currencies')
+        $schedule->command('supplement:currencies')
+            ->daily();
+//            ->days([2, 3, 4, 5, 6])
+//            ->twiceDaily(9, 13);
         // $schedule->command('inspire')->hourly();
     }
 
